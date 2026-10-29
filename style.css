@@ -241,6 +241,46 @@ section h2::after {
     font-size: 18px;
 }
 
+.skills-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* تجبر العناصر على الظهور في عمودين (بطاقتين في كل صف) */
+    gap: 15px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.skill-badge {
+    background-color: #16222f;
+    color: #e4e6eb;
+    padding: 12px 20px;
+    border-radius: 12px;
+    font-weight: 500;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start; /* لترتيب الأيقونة والنص بشكل جميل */
+    gap: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    transition: all 0.3s ease;
+}
+
+/* إذا أردت أن تأخذ بطاقة C++ الأخيرة عرض السطر كاملاً لوحدها في الأسفل */
+.skills-container .skill-badge:last-child {
+    grid-column: span 2; 
+    justify-content: center; /* لتتوسط الأيقونة والنص في المنتصف */
+}
+
+/* التجاوب مع شاشات الهواتف الصغيرة جداً لتصبح مهارة واحدة في الصف إذا احتجت */
+@media (max-width: 480px) {
+    .skills-container {
+        grid-template-columns: 1fr;
+    }
+    .skills-container .skill-badge:last-child {
+        grid-column: span 1;
+    }
+}
+
+
 /* ألوان خاصة لكل لغة عند تمرير الماوس لإضفاء لمسة احترافية */
 .skill-badge:hover {
     transform: translateY(-5px);
